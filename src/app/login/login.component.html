@@ -1,0 +1,66 @@
+<div class="container" style="
+    border: 1px solid #e7e7e7;
+    background-color: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+  ">
+    <div class="row">
+        <div class="col-sm-6">
+            <img src="assets/img/4826435.jpg" style="border: none" class="img-thumbnail" />
+        </div>
+        <div class="col-sm-6">
+            <div class="card" style="margin-top: 60px">
+                <div class="card-body">
+                    <div class="section-title">
+                        <h4>Login</h4>
+                    </div>
+                    <div *ngIf="alert" class="alert alert-success alert-dismissible fade show mt-3 mb-3" role="alert">
+                        Data Added Successfully
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+                    </div>
+                    <form action="" [formGroup]="loginForm" (ngSubmit)="data()">
+                        <div class="form-row">
+                            <div class="form-group required col-md-12">
+                                <label for="Email">Email</label>
+                                <input type="email" class="form-control" autocomplete="off" formControlName="Email" />
+                                <label class="text-danger" *ngIf="
+                    loginForm.get('Email')?.touched &&
+                    loginForm.get('Email')?.errors?.['required']
+                  ">
+                  Email Must Required
+                </label>
+                                <label class="text-danger" *ngIf="
+                  loginForm.get('Email')?.touched &&
+                  loginForm.get('Email')?.errors?.['email']
+                ">
+                  Email Not Valid
+                </label>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group required col-md-12">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" autocomplete="off" formControlName="Password" />
+                                <label class="text-danger" *ngIf="loginForm.get('Password')?.touched && loginForm.get('Password')?.errors?.['required']">
+                  Password Must Required
+                </label>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-8">
+                                Don't Have An Account?<a routerLink="/Register" tyle="color: #007dfe;" class="a">
+                  Click Here</a>
+                            </div>
+                        </div>
+                        <div class="form-group form-check"></div>
+                        <button type="submit" class="btn" style="background-color: #007dfe; color: white" name="login">
+              <i class="fa fa-sign-in" aria-hidden="true" style="margin-right: 10px"></i>Login
+            </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
