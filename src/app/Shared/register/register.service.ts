@@ -7,11 +7,11 @@ import {HttpClient} from '@angular/common/http'
 })
 export class RegisterService {
   constructor(private http:HttpClient) {}
-  // readonly BaseUrl = 'http://localhost:5096/api';
+   BaseUrl = "https://localhost:44380/api/Customer/AddCustomers";
 
-  hello()
+  RegisterUser(data:any)
   {
-    return "hello";
+    return this.http.post(this.BaseUrl,data)
   }
  
 }

@@ -8,10 +8,10 @@ import { HttpClient } from '@angular/common/http';
 export class LoginService {
   constructor(private http:HttpClient) {}
 
-  url="https://localhost:44339/AddUser"
-  login(data:any)
+  url="https://localhost:44380/api/Customer/Login"
+  CustomerLogin(data:any)
   {
-    return this.http.post(this.url, data,{ responseType: 'text' as 'json' })
+    return this.http.post(this.url, data)
   }
   
 }

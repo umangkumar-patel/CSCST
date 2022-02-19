@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../Shared/register/register.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -8,10 +9,10 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-  constructor(private fb: FormBuilder,private service:RegisterService) {}
+  constructor(private fb: FormBuilder,private service:RegisterService,private toastr: ToastrService) {}
 
   ngOnInit() {
-    // this.registerSevice.registerForm.reset();
+    this.registerForm.reset();
   }
 
   registerForm = this.fb.group({
@@ -22,21 +23,43 @@ export class RegisterComponent implements OnInit {
       '',
       Validators.compose([Validators.required, Validators.minLength(6)]),
     ],
-    ProflePhoto: [''],
-    PhoneNumber: [
+    
+    phoneNo: [
       '',
-      Validators.compose([Validators.required, Validators.minLength(10)]),
+      Validators.compose([Validators.required, Validators.minLength(10)])
     ],
-    AlternatePhoneNumber: [
+    alternatePhoneNo: [
       '',
-      Validators.compose([Validators.required, Validators.minLength(10)]),
+      Validators.compose([Validators.minLength(10)])
     ],
+    
   });
 
-  data()
+  AddNewUser()
   {
     // console.warn(this.registerForm.value)
-  console.warn(this.service.hello());
+  this.service.RegisterUser(this.registerForm.value).subscribe((res:any)=>{
+
+    console.log(res)
+    if(res.statusCode==200)
+    {
+
+      this.toastr.success('Success',res.messeage);
+        this.registerForm.reset()
+
+
+    }
+    else if(res.statusCode==400)
+    {
+      this.toastr.error('Error',res.messeage);
+      
+
+
+    }
+    
+  });
+
+ 
 
   }
   
