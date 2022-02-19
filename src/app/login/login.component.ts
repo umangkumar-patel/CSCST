@@ -16,36 +16,39 @@ export class LoginComponent implements OnInit {
   alert:boolean=false;
 
   loginForm = this.fb.group({
-    Email: ['', Validators.compose([Validators.required, Validators.email])],
-    Password: [
-      '',
+    email: ['umangkumar18@gnu.ac.in', Validators.compose([Validators.required, Validators.email])],
+    password: [
+      'Umang@123',
       Validators.compose([Validators.required, Validators.minLength(6)]),
     ],
   });
 
-  data()
-  {
-
-   
-
-
+  
+  Login()
+  {  
+    this.service.CustomerLogin(this.loginForm.value).subscribe((res:any)=>{
 
 
-      this.service.login(this.loginForm.value).subscribe((res:any)=>
+      console.warn(res)
+      if(res.statusCode==200)
       {
-        if(res=="Added")
-        { 
-        this.toastr.success('Success',res);
-        this.loginForm.reset()
-
-        }
-        else if(res=="User Already Exist")
-        {
-          this.toastr.error('Error',res);
-        }
-       
-      })
+  
+          this.toastr.success('Success',res.messeage);
+          console.warn("Yes")
+          this.loginForm.reset()
+  
+  
+      }
+      else if(res.statusCode==400)
+      {
+        this.toastr.error('Error',res.messeage);
+        
+  
+  
+      }
+      
+    });
   
     
-  }
+}
 }

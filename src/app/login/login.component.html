@@ -14,50 +14,45 @@
                     <div class="section-title">
                         <h4>Login</h4>
                     </div>
-                    <div *ngIf="alert" class="alert alert-success alert-dismissible fade show mt-3 mb-3" role="alert">
-                        Data Added Successfully
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-                    </div>
-                    <form action="" [formGroup]="loginForm" (ngSubmit)="data()">
+
+                    <form action="" [formGroup]="loginForm" (ngSubmit)="Login()">
                         <div class="form-row">
                             <div class="form-group required col-md-12">
                                 <label for="Email">Email</label>
-                                <input type="email" class="form-control" autocomplete="off" formControlName="Email" />
+                                <input type="email" class="form-control" id="Email" autocomplete="off" formControlName="email" />
                                 <label class="text-danger" *ngIf="
-                    loginForm.get('Email')?.touched &&
-                    loginForm.get('Email')?.errors?.['required']
+                    loginForm.get('email')?.touched &&
+                    loginForm.get('email')?.errors?.['required']
                   ">
-                  Email Must Required
-                </label>
+                                    Email Must Required
+                                </label>
                                 <label class="text-danger" *ngIf="
-                  loginForm.get('Email')?.touched &&
-                  loginForm.get('Email')?.errors?.['email']
+                  loginForm.get('email')?.touched &&
+                  loginForm.get('email')?.errors?.['email']
                 ">
-                  Email Not Valid
-                </label>
+                                    Email Not Valid
+                                </label>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group required col-md-12">
-                                <label for="password">Password</label>
-                                <input type="password" class="form-control" autocomplete="off" formControlName="Password" />
-                                <label class="text-danger" *ngIf="loginForm.get('Password')?.touched && loginForm.get('Password')?.errors?.['required']">
-                  Password Must Required
-                </label>
+                                <label for="Password">Password</label>
+                                <input type="password" id="Password" class="form-control" autocomplete="off" formControlName="password" />
+                                <label class="text-danger" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['required']">
+                                    Password Must Required
+                                </label>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-8">
                                 Don't Have An Account?<a routerLink="/Register" tyle="color: #007dfe;" class="a">
-                  Click Here</a>
+                                    Click Here</a>
                             </div>
                         </div>
                         <div class="form-group form-check"></div>
                         <button type="submit" class="btn" style="background-color: #007dfe; color: white" name="login">
-              <i class="fa fa-sign-in" aria-hidden="true" style="margin-right: 10px"></i>Login
-            </button>
+                            <i class="fa fa-sign-in" aria-hidden="true" style="margin-right: 10px"></i>Login
+                        </button>
                     </form>
                 </div>
             </div>

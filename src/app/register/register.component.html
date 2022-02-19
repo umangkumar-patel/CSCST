@@ -12,11 +12,11 @@
                         <div class="section-title">
                             <h4 style="margin: 0%">Sign Up</h4>
                         </div>
-                        <form [formGroup]="registerForm" (ngSubmit)="data()" autocomplete="off">
+                        <form [formGroup]="registerForm" (ngSubmit)="AddNewUser()" autocomplete="off">
                             <div class="form-row">
                                 <div class="form-group required col-md-6">
                                     <label for="FirstName">FirstName</label>
-                                    <input type="text" class="form-control" name="firstName" formControlName="FirstName" value="Mark" />
+                                    <input type="text" id="FirstName" class="form-control" name="firstName" formControlName="FirstName" value="Mark" />
                                     <label class="text-danger" *ngIf="
                     registerForm.get('FirstName')?.touched &&
                     registerForm.get('FirstName')?.errors?.['required']
@@ -24,7 +24,7 @@
                                 </div>
                                 <div class="form-group required col-md-6">
                                     <label for="LastName">LastName</label>
-                                    <input type="text" class="form-control" name="LastName" formControlName="LastName" />
+                                    <input type="text" id="LastName" class="form-control" name="LastName" formControlName="LastName" />
                                     <label class="text-danger" *ngIf="
                     registerForm.get('LastName')?.touched &&
                     registerForm.get('LastName')?.errors?.['required']
@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="form-group required col-md-6">
                                     <label for="Email">Email</label>
-                                    <input type="Email" class="form-control" name="Email" formControlName="Email" />
+                                    <input type="Email" id="Email" class="form-control" name="Email" formControlName="Email" />
                                     <label class="text-danger" *ngIf="
                       registerForm.get('Email')?.touched &&
                       registerForm.get('Email')?.errors?.['required']
@@ -44,56 +44,53 @@
                                 </div>
                                 <div class="form-group required col-md-6">
                                     <label for="Password">Password</label>
-                                    <input type="password" class="form-control" autocomplete="off" required formControlName="Password" />
+                                    <input type="password" id="Password" class="form-control" autocomplete="off" required formControlName="Password" />
                                     <label class="text-danger" *ngIf="
                       registerForm.get('Password')?.touched &&
                       registerForm.get('Password')?.errors?.['minlength']
                     ">
-                    Minimum 6 Characters Required
-                  </label>
+                                        Minimum 6 Characters Required
+                                    </label>
                                     <label class="text-danger" *ngIf="registerForm.get('Password')?.touched && registerForm.get('Password')?.errors?.['required']">
-                    Password Must Required
-                  </label>
+                                        Password Must Required
+                                    </label>
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="image" style="margin-top: 5pxx">Upload Profile Photo</label>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="image" name="image" formControlName="ProflePhoto" />
-                                        <label class="custom-file-label" for="customFile">Choose Photo</label>
-                                    </div>
-                                </div>
+
                                 <div class="form-group required col-md-6">
-                                    <label for="PhoneNumber">PhoneNumber</label>
-                                    <input type="text" class="form-control" name="PhoneNumber" formControlName="PhoneNumber" />
+                                    <label for="phoneNo">PhoneNumber</label>
+                                    <input type="text" id="phoneNo" class="form-control" name="phoneNo" formControlName="phoneNo" />
                                     <label class="text-danger" *ngIf="
-                      registerForm.get('PhoneNumber')?.touched &&
-                      registerForm.get('PhoneNumber')?.errors?.['required']
+                      registerForm.get('phoneNo')?.touched &&
+                      registerForm.get('phoneNo')?.errors?.['required']
                     ">PhoneNumber Must Required</label>
                                     <label class="text-danger" *ngIf="
-                      registerForm.get('PhoneNumber')?.touched &&
-                      registerForm.get('PhoneNumber')?.errors?.['minlength']
+                      registerForm.get('phoneNo')?.touched &&
+                      registerForm.get('phoneNo')?.errors?.['minlength']
                     ">Enter Valid Phone Number</label>
                                 </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="alternatePhoneNo">Alternate Phone Number</label>
+                                    <input type="text" id="alternatePhoneNo" class="form-control" id="alternatePhoneNo" formControlName="alternatePhoneNo" />
+                                    <label class="text-danger" *ngIf="
+                              registerForm.get('alternatePhoneNo')?.touched &&
+                              registerForm.get('alternatePhoneNo')?.errors?.['required']
+                            ">alternatePhoneNo Must Required</label>
+                                    <label class="text-danger" *ngIf="
+                              registerForm.get('alternatePhoneNo')?.touched &&
+                              registerForm.get('alternatePhoneNo')?.errors?.['minlength']
+                            ">Enter Valid Phone Number</label>
+
+                                </div>
                             </div>
-                            <div class="form-group required">
-                                <label for="AlternatePhoneNumber">Alternate Phone Number</label>
-                                <input type="text" class="form-control" id="AlternatePhoneNumber" formControlName="AlternatePhoneNumber" />
-                                <label class="text-danger" *ngIf="
-                      registerForm.get('AlternatePhoneNumber')?.touched &&
-                      registerForm.get('AlternatePhoneNumber')?.errors?.['required']
-                    ">AlternatePhoneNumber Must Required</label>
-                                <label class="text-danger" *ngIf="
-                      registerForm.get('AlternatePhoneNumber')?.touched &&
-                      registerForm.get('AlternatePhoneNumber')?.errors?.['minlength']
-                    ">Enter Valid Phone Number</label>
-                            </div>
-                            <button type="submit" class="btn-block btn btn-primary" name="register" [disabled]="!registerForm.valid">
-                <i class="fa fa-user-plus" aria-hidden="true" style="margin-right: 10px"></i>
-                <!-- <a href="otp_verifiction.html" style="color: white;"> -->
-                Sign Up
-              </button>
+
+                            <button type="submit" class="btn-block btn btn-primary mt-3" name="register" [disabled]="!registerForm.valid">
+                                <i class="fa fa-user-plus" aria-hidden="true" style="margin-right: 10px"></i>
+                                <!-- <a href="otp_verifiction.html" style="color: white;"> -->
+                                Sign Up
+                            </button>
                         </form>
                     </div>
                 </div>
